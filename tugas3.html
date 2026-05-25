@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Tugas Dekomposisi dan Nilai Eigen &#8212; Ahmad A&#39;dhomun Ni&#39;am Syah Putra</title>
+    <title>Determinan Matriks &#8212; Ahmad A&#39;dhomun Ni&#39;am Syah Putra</title>
   
   
   
@@ -65,6 +65,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'tugas3';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Adjoin dan Invers Matriks" href="tugas4.html" />
     <link rel="prev" title="Tugas Transformasi Matriks" href="tugas2.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -170,9 +171,44 @@
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="tugas.html">Isi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tugas.html">Persamaan Linear</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tugas1.html">Eliminasi Gauss</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tugas2.html">Tugas Transformasi Matriks</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Tugas Dekomposisi dan Nilai Eigen</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Determinan Matriks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tugas4.html">Adjoin dan Invers Matriks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tugas5.html">Evaluasi Determinan dan Invers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tugas6.html">Tugas Dekomposisi dan Nilai Eigen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tugas7.html">Face Recognition Eigenface + SVD</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </ul>
 
     </div>
@@ -355,7 +391,7 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Tugas Dekomposisi dan Nilai Eigen</h1>
+    <h1>Determinan Matriks</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -365,14 +401,11 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#link-colab">Link Colab:</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#membuat-matriks-22">1. Membuat Matriks 2×2</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#konsep-eigenvalue-dan-eigenvector">2. Konsep Eigenvalue dan Eigenvector</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#proses-mencari-eigenvalue">3. Proses Mencari Eigenvalue</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#proses-mencari-eigenvector">4. Proses Mencari Eigenvector</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#konsep-qr-decomposition">5. Konsep QR Decomposition</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#proses-iterasi-qr">6. Proses Iterasi QR</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hasil-setelah-10-iterasi">7. Hasil Setelah 10 Iterasi</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pengertian-determinan">Pengertian Determinan</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matriks-koefisien">Matriks Koefisien</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eliminasi-matriks">Eliminasi Matriks</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#menghitung-determinan">Menghitung Determinan</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kesimpulan">Kesimpulan</a></li>
 </ul>
             </nav>
         </div>
@@ -384,145 +417,61 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="tugas-dekomposisi-dan-nilai-eigen">
-<h1>Tugas Dekomposisi dan Nilai Eigen<a class="headerlink" href="#tugas-dekomposisi-dan-nilai-eigen" title="Link to this heading">#</a></h1>
-<section id="link-colab">
-<h2>Link Colab:<a class="headerlink" href="#link-colab" title="Link to this heading">#</a></h2>
-<p><a class="reference external" href="https://colab.research.google.com/drive/12lJ6uo8rNRAcJvV1fADIOibkbBTVQAqD?usp=sharing">https://colab.research.google.com/drive/12lJ6uo8rNRAcJvV1fADIOibkbBTVQAqD?usp=sharing</a></p>
+  <section class="tex2jax_ignore mathjax_ignore" id="determinan-matriks">
+<h1>Determinan Matriks<a class="headerlink" href="#determinan-matriks" title="Link to this heading">#</a></h1>
+<section id="pengertian-determinan">
+<h2>Pengertian Determinan<a class="headerlink" href="#pengertian-determinan" title="Link to this heading">#</a></h2>
+<p>Determinan adalah suatu nilai skalar yang diperoleh dari matriks persegi.
+Determinan digunakan untuk:</p>
+<ul class="simple">
+<li><p>Menentukan apakah matriks memiliki invers</p></li>
+<li><p>Menentukan solusi SPL</p></li>
+<li><p>Digunakan dalam transformasi matriks</p></li>
+</ul>
 </section>
-<section id="membuat-matriks-22">
-<h2>1. Membuat Matriks 2×2<a class="headerlink" href="#membuat-matriks-22" title="Link to this heading">#</a></h2>
-<p>Langkah pertama program adalah mendefinisikan matriks:</p>
+<section id="matriks-koefisien">
+<h2>Matriks Koefisien<a class="headerlink" href="#matriks-koefisien" title="Link to this heading">#</a></h2>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-A = \begin{bmatrix}
-2 &amp; 1 \\
-1 &amp; 2
+A =
+\begin{bmatrix}
+1 &amp; 1 &amp; 1 &amp; 1 &amp; 1 \\
+2 &amp; 1 &amp; 1 &amp; 1 &amp; 1 \\
+2 &amp; 2 &amp; 1 &amp; 1 &amp; 1 \\
+2 &amp; 2 &amp; 2 &amp; 1 &amp; 1 \\
+2 &amp; 2 &amp; 2 &amp; 2 &amp; 1
 \end{bmatrix}
 \end{split}\]</div>
-<p>Matriks ini merupakan matriks simetris karena elemen di atas diagonal utama sama dengan elemen di bawah diagonal utama.</p>
-<p><strong>Diagonal utama:</strong></p>
-<ul class="simple">
-<li><p>2</p></li>
-<li><p>2</p></li>
-</ul>
-<p><strong>Elemen lainnya:</strong></p>
-<ul class="simple">
-<li><p>1</p></li>
-<li><p>1</p></li>
-</ul>
-<p>Matriks simetris biasanya lebih mudah dianalisis pada proses pencarian eigenvalue.</p>
 </section>
-<section id="konsep-eigenvalue-dan-eigenvector">
-<h2>2. Konsep Eigenvalue dan Eigenvector<a class="headerlink" href="#konsep-eigenvalue-dan-eigenvector" title="Link to this heading">#</a></h2>
-<p>Eigenvalue adalah nilai khusus yang dimiliki suatu matriks.</p>
-<p>Sedangkan eigenvector adalah vektor yang arahya tetap setelah dikalikan matriks.</p>
-<p>Hubungan keduanya ditulis sebagai:</p>
-<div class="math notranslate nohighlight">
-\[ Av = \lambda v \]</div>
-<div class="math notranslate nohighlight">
-\[ Av = \lambda v \]</div>
-<p>Keterangan:</p>
-<ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(A\)</span> = matriks</p></li>
-<li><p><span class="math notranslate nohighlight">\(v\)</span> = eigenvector</p></li>
-<li><p><span class="math notranslate nohighlight">\(\lambda\)</span> = eigenvalue</p></li>
-</ul>
-<p>Artinya:
-Ketika eigenvector dikalikan dengan matriks, hasilnya hanya berubah skala sebesar eigenvalue.</p>
-</section>
-<section id="proses-mencari-eigenvalue">
-<h2>3. Proses Mencari Eigenvalue<a class="headerlink" href="#proses-mencari-eigenvalue" title="Link to this heading">#</a></h2>
-<p>Program mencari eigenvalue dari matriks menggunakan fungsi bawaan Python pada library NumPy.</p>
-<p>Untuk matriks:</p>
+<section id="eliminasi-matriks">
+<h2>Eliminasi Matriks<a class="headerlink" href="#eliminasi-matriks" title="Link to this heading">#</a></h2>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{bmatrix}
-2 &amp; 1 \\
-1 &amp; 2
+1 &amp; 1 &amp; 1 &amp; 1 &amp; 1 \\
+0 &amp; -1 &amp; -1 &amp; -1 &amp; -1 \\
+0 &amp; 0 &amp; -1 &amp; -1 &amp; -1 \\
+0 &amp; 0 &amp; 0 &amp; -1 &amp; -1 \\
+0 &amp; 0 &amp; 0 &amp; 0 &amp; -1
 \end{bmatrix}
 \end{split}\]</div>
-<p>diperoleh eigenvalue:</p>
-<div class="math notranslate nohighlight">
-\[ \lambda_1 = 3 \]</div>
-<div class="math notranslate nohighlight">
-\[ \lambda_2 = 1 \]</div>
-<p>Eigenvalue menunjukkan karakteristik utama dari matriks tersebut.</p>
 </section>
-<section id="proses-mencari-eigenvector">
-<h2>4. Proses Mencari Eigenvector<a class="headerlink" href="#proses-mencari-eigenvector" title="Link to this heading">#</a></h2>
-<p>Setelah eigenvalue diperoleh, program menghitung eigenvector yang sesuai.</p>
-<p>Hasil eigenvector biasanya berupa:</p>
-<p>Untuk eigenvalue 3:</p>
+<section id="menghitung-determinan">
+<h2>Menghitung Determinan<a class="headerlink" href="#menghitung-determinan" title="Link to this heading">#</a></h2>
+<p>Karena matriks sudah berbentuk segitiga atas, maka determinan diperoleh dari hasil perkalian diagonal utama.</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{bmatrix}
-1 \\
-1
-\end{bmatrix}
-\end{split}\]</div>
-<p>Untuk eigenvalue 1:</p>
+\[
+\det(A) = 1 \times (-1) \times (-1) \times (-1) \times (-1)
+\]</div>
 <div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{bmatrix}
-1 \\
--1
-\end{bmatrix}
-\end{split}\]</div>
-<p>Eigenvector pertama menunjukkan arah pertumbuhan utama matriks.</p>
-<p>Eigenvector kedua menunjukkan arah lain yang tetap setelah transformasi matriks dilakukan</p>
+\[
+\det(A) = 1
+\]</div>
 </section>
-<section id="konsep-qr-decomposition">
-<h2>5. Konsep QR Decomposition<a class="headerlink" href="#konsep-qr-decomposition" title="Link to this heading">#</a></h2>
-<p>Program kemudian melakukan QR Decomposition.</p>
-<p>QR Decomposition memecah matriks menjadi:</p>
-<div class="math notranslate nohighlight">
-\[ A = QR \]</div>
-<div class="math notranslate nohighlight">
-\[ A = QR \]</div>
-<p>Keterangan:</p>
-<ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(Q\)</span> = matriks ortogonal</p></li>
-<li><p><span class="math notranslate nohighlight">\(R\)</span> = matriks segitiga atas</p></li>
-</ul>
-<p>Tujuan metode ini adalah mencari eigenvalue secara iteratif.</p>
-</section>
-<section id="proses-iterasi-qr">
-<h2>6. Proses Iterasi QR<a class="headerlink" href="#proses-iterasi-qr" title="Link to this heading">#</a></h2>
-<p>Setelah mendapatkan <span class="math notranslate nohighlight">\(Q\)</span> dan <span class="math notranslate nohighlight">\(R\)</span>, program membentuk matriks baru:</p>
-<div class="math notranslate nohighlight">
-\[ A_{baru} = RQ \]</div>
-<div class="math notranslate nohighlight">
-\[ A_{baru} = RQ \]</div>
-<p>Langkah ini dilakukan berulang sebanyak 10 iterasi.</p>
-<p>Pada setiap iterasi:</p>
-<ol class="arabic simple">
-<li><p>Matriks dipecah menjadi <span class="math notranslate nohighlight">\(Q\)</span> dan <span class="math notranslate nohighlight">\(R\)</span></p></li>
-<li><p>Dibentuk matriks baru <span class="math notranslate nohighlight">\(RQ\)</span></p></li>
-<li><p>Nilai diagonal matriks mulai mendekati eigenvalue</p></li>
-</ol>
-<p>Semakin banyak iterasi:</p>
-<ul class="simple">
-<li><p>nilai diagonal semakin stabil</p></li>
-<li><p>hasil semakin mendekati eigenvalue asli</p></li>
-</ul>
-</section>
-<section id="hasil-setelah-10-iterasi">
-<h2>7. Hasil Setelah 10 Iterasi<a class="headerlink" href="#hasil-setelah-10-iterasi" title="Link to this heading">#</a></h2>
-<p>Setelah iterasi dilakukan sebanyak 10 kali, diagonal matriks akan mendekati:</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{bmatrix}
-3 &amp; 0 \\
-0 &amp; 1
-\end{bmatrix}
-\end{split}\]</div>
-<p><strong>Nilai diagonal:</strong></p>
-<ul class="simple">
-<li><p>3</p></li>
-<li><p>1</p></li>
-</ul>
-<p>merupakan eigenvalue dari matriks awal.</p>
+<section id="kesimpulan">
+<h2>Kesimpulan<a class="headerlink" href="#kesimpulan" title="Link to this heading">#</a></h2>
+<p>Karena determinan matriks tidak sama dengan nol,
+maka matriks memiliki invers.</p>
 </section>
 </section>
 
@@ -565,6 +514,15 @@ Ketika eigenvector dikalikan dengan matriks, hasilnya hanya berubah skala sebesa
         <p class="prev-next-title">Tugas Transformasi Matriks</p>
       </div>
     </a>
+    <a class="right-next"
+       href="tugas4.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Adjoin dan Invers Matriks</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -583,14 +541,11 @@ Ketika eigenvector dikalikan dengan matriks, hasilnya hanya berubah skala sebesa
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#link-colab">Link Colab:</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#membuat-matriks-22">1. Membuat Matriks 2×2</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#konsep-eigenvalue-dan-eigenvector">2. Konsep Eigenvalue dan Eigenvector</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#proses-mencari-eigenvalue">3. Proses Mencari Eigenvalue</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#proses-mencari-eigenvector">4. Proses Mencari Eigenvector</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#konsep-qr-decomposition">5. Konsep QR Decomposition</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#proses-iterasi-qr">6. Proses Iterasi QR</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hasil-setelah-10-iterasi">7. Hasil Setelah 10 Iterasi</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pengertian-determinan">Pengertian Determinan</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matriks-koefisien">Matriks Koefisien</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eliminasi-matriks">Eliminasi Matriks</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#menghitung-determinan">Menghitung Determinan</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kesimpulan">Kesimpulan</a></li>
 </ul>
   </nav></div>
 
