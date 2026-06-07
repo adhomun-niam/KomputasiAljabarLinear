@@ -4,452 +4,531 @@
 > 🔗 Link Google Colab:  
 > https://colab.research.google.com/drive/1aKPtuqdLmjBoEcAdAajcHexF-EUdu3x_?usp=sharing
 
+
+## Deskripsi Program
+
+Program ini digunakan untuk:
+
+* Mengupload gambar
+* Mengubah gambar menjadi grayscale
+* Melakukan proses Singular Value Decomposition (SVD)
+* Mereconstruct gambar menggunakan hasil SVD
+* Membandingkan kualitas hasil rekonstruksi berdasarkan nilai `k`
+* Menghitung nilai MSE dan PSNR
+
+Program dibuat menggunakan Python pada Google Colab.
+
 ---
 
-# Deskripsi Program
-
-Program ini menggunakan metode:
-
-- Eigenface
-- Singular Value Decomposition (SVD)
-- Euclidean Distance
-
-untuk melakukan pengenalan wajah sederhana menggunakan Python di Google Colab.
-
----
-
-# Install Library
+# Library yang Digunakan
 
 ```python
-!pip install opencv-python matplotlib -q
-```
-
----
-
-# Import Library
-
-```python
-import os
 import cv2
 import numpy as np
 import matplotlib.pyplot as plt
-
 from google.colab import files
 ```
 
----
+## Penjelasan
 
-# Format Upload Foto
-
-Upload semua gambar training langsung dari komputer.
-
-Contoh nama file:
-
-```text
-amba_1.jpg
-amba_2.jpg
-amba_3.jpg
-
-bahlil_1.jpg
-bahlil_2.jpg
-bahlil_3.jpg
-```
-
-Nama sebelum `_` akan menjadi label wajah.
-
-Contoh:
-
-```text
-amba_1.jpg → label = amba
-```
-
----
-
-# Upload Foto Training
+### 1. OpenCV
 
 ```python
-print("Upload semua foto training")
+import cv2
+```
 
+Digunakan untuk:
+
+* Membaca gambar
+* Mengolah citra digital
+* Menghitung perbedaan gambar
+
+---
+
+### 2. NumPy
+
+```python
+import numpy as np
+```
+
+Digunakan untuk:
+
+* Operasi matriks
+* Perhitungan matematika
+* Singular Value Decomposition (SVD)
+
+---
+
+### 3. Matplotlib
+
+```python
+import matplotlib.pyplot as plt
+```
+
+Digunakan untuk:
+
+* Menampilkan gambar
+* Membuat visualisasi hasil
+
+---
+
+### 4. Files Google Colab
+
+```python
+from google.colab import files
+```
+
+Digunakan untuk mengupload file gambar ke Google Colab.
+
+---
+
+# Upload Gambar
+
+```python
 uploaded = files.upload()
 ```
 
----
-
-# Load Dataset
-
-Program membaca semua gambar training.
-
-Tahapan preprocessing:
-
-1. Grayscale
-2. Resize 100×100
-3. Flatten menjadi vector
-4. Simpan ke matrix data
+Kode ini digunakan untuk mengupload gambar dari komputer pengguna.
 
 ---
+
+# Perulangan File
 
 ```python
-data_matrix = []
-labels = []
-
-img_size = (100, 100)
-
 for file_name in uploaded.keys():
-
-    label = file_name.split("_")[0]
-
-    img = cv2.imread(file_name, cv2.IMREAD_GRAYSCALE)
-
-    img = cv2.resize(img, img_size)
-
-    img_vector = img.flatten()
-
-    data_matrix.append(img_vector)
-
-    labels.append(label)
 ```
+
+Digunakan untuk membaca semua file yang berhasil diupload.
 
 ---
 
-# Convert ke Numpy Array
+# Membaca Gambar
 
 ```python
-data_matrix = np.array(data_matrix, dtype='float32')
-
-print("Jumlah data training :", len(data_matrix))
-
-print("Ukuran matrix data   :", data_matrix.shape)
-
-print(labels)
+img = cv2.imread(file_name, cv2.IMREAD_GRAYSCALE)
 ```
+
+## Penjelasan
+
+Gambar dibaca dalam bentuk grayscale.
+
+Artinya gambar hanya memiliki:
+
+* warna hitam
+* putih
+* abu-abu
+
+Setiap pixel memiliki nilai 0–255.
 
 ---
 
-# Visualisasi Sample Training
+# Mengambil Ukuran Gambar
 
 ```python
-plt.figure(figsize=(4,4))
-
-plt.imshow(data_matrix[0].reshape(100,100), cmap='gray')
-
-plt.title(f"Sample : {labels[0]}")
-
-plt.axis('off')
-
-plt.show()
+rows, cols = img.shape
 ```
 
+## Penjelasan
+
+* `rows` = jumlah baris
+* `cols` = jumlah kolom
+
+Karena gambar dianggap sebagai matriks.
+
 ---
 
-# Mean Face
-
-Mean face adalah rata-rata semua wajah training.
-
----
+# Menampilkan Ukuran Matriks
 
 ```python
-mean_face = np.mean(data_matrix, axis=0)
+print("===== UKURAN GAMBAR =====")
+print("Kolom :", cols)
+print("Baris :", rows)
+print("Matrix A :", rows, "x", cols)
 ```
 
----
+Program menampilkan ukuran matriks gambar.
 
-# Visualisasi Mean Face
+Contoh:
 
 ```python
-plt.figure(figsize=(5,5))
-
-plt.imshow(mean_face.reshape(100,100), cmap='gray')
-
-plt.title("Mean Face")
-
-plt.axis('off')
-
-plt.show()
+Matrix A : 512 x 512
 ```
 
----
+Artinya gambar memiliki:
 
-# Centering Data
-
-Semua data dikurangi mean face.
-
----
-
-```python
-A = data_matrix - mean_face
-```
+* 512 baris
+* 512 kolom
 
 ---
 
 # Singular Value Decomposition (SVD)
 
-Persamaan dasar:
-
-```text
-A = U × Σ × VT
+```python
+U, S, VT = np.linalg.svd(img, full_matrices=False)
 ```
 
+## Penjelasan
+
+Fungsi ini memecah matriks gambar menjadi:
+
+[
+A = U \Sigma V^T
+]
+
+A = U\Sigma V^T
+
+Dimana:
+
+* `U` = matriks orthogonal kiri
+* `Σ` (Sigma) = nilai singular
+* `VT` = transpose matriks orthogonal kanan
+
 ---
 
+# Membentuk Matriks Sigma
+
 ```python
-U, S, VT = np.linalg.svd(A, full_matrices=False)
+Sigma = np.diag(S)
 ```
 
+## Penjelasan
+
+Nilai singular pada `S` diubah menjadi matriks diagonal.
+
+Contoh:
+
+[
+\Sigma =
+\begin{bmatrix}
+5 & 0 & 0 \
+0 & 3 & 0 \
+0 & 0 & 1
+\end{bmatrix}
+]
+
 ---
 
-# Ukuran Matrix Hasil SVD
+# Menampilkan Ukuran Hasil SVD
 
 ```python
-print("Ukuran U  :", U.shape)
-
-print("Ukuran S  :", S.shape)
-
-print("Ukuran VT :", VT.shape)
+print("\n===== HASIL SVD =====")
+print("Ukuran U     :", U.shape)
+print("Ukuran Sigma :", Sigma.shape)
+print("Ukuran VT    :", VT.shape)
 ```
 
+Program menampilkan ukuran masing-masing matriks hasil SVD.
+
 ---
 
-# Singular Values
+# Proses Perkalian Matriks
+
+## Perkalian Pertama
 
 ```python
-print(S)
+US = U @ Sigma
 ```
 
-Semakin besar singular value:
+Dilakukan perkalian:
 
-- semakin penting komponen tersebut
-- semakin besar variasi wajah yang disimpan
+[
+U \times \Sigma
+]
+
+U\Sigma
 
 ---
 
-# Visualisasi Singular Values
+## Perkalian Kedua
 
 ```python
-plt.plot(S)
-
-plt.title("Singular Values")
-
-plt.xlabel("Komponen")
-
-plt.ylabel("Nilai Singular")
-
-plt.grid()
-
-plt.show()
+A_hasil = US @ VT
 ```
 
+Dilakukan perkalian:
+
+[
+(U\Sigma)V^T
+]
+
+(U\Sigma)V^T
+
+Hasil akhirnya adalah rekonstruksi gambar asli.
+
 ---
 
-# Eigenface
-
-Eigenface berasal dari baris-baris matrix VT.
-
----
+# Cek Rekonstruksi
 
 ```python
-num_eigenfaces = len(S)
+print(np.allclose(img, A_hasil))
+```
 
-plt.figure(figsize=(15,8))
+## Penjelasan
 
-for i in range(num_eigenfaces):
+Digunakan untuk mengecek apakah hasil rekonstruksi sama dengan gambar asli.
 
-    plt.subplot(2, 3, i+1)
+Jika hasil:
 
-    eigenface = VT[i].reshape(100,100)
+```python
+True
+```
 
-    plt.imshow(eigenface, cmap='gray')
+Maka rekonstruksi berhasil.
 
-    plt.title(f"Eigenface {i+1}")
+---
 
-    plt.axis('off')
+# Konversi ke Format Gambar
 
+```python
+img_reconstructed = np.clip(A_hasil, 0, 255).astype(np.uint8)
+```
+
+## Penjelasan
+
+Digunakan untuk:
+
+* Membatasi pixel antara 0–255
+* Mengubah tipe data menjadi gambar (`uint8`)
+
+---
+
+# Menghitung Selisih Gambar
+
+```python
+diff_full = cv2.absdiff(img, img_reconstructed)
+```
+
+## Penjelasan
+
+Menghitung perbedaan pixel antara:
+
+* gambar asli
+* gambar hasil rekonstruksi
+
+---
+
+# Menghitung Error
+
+```python
+print("Rata-rata selisih :", np.mean(diff_full))
+print("Maks selisih      :", np.max(diff_full))
+```
+
+## Penjelasan
+
+### Mean Difference
+
+Rata-rata perbedaan pixel.
+
+### Max Difference
+
+Perbedaan pixel terbesar.
+
+---
+
+# Nilai k pada SVD
+
+```python
+k_values = [10, 50, 100, 200]
+```
+
+## Penjelasan
+
+`k` digunakan untuk mengambil sebagian singular value saja.
+
+Semakin kecil `k`:
+
+* ukuran data lebih kecil
+* kualitas gambar menurun
+
+Semakin besar `k`:
+
+* gambar lebih jelas
+* ukuran data lebih besar
+
+---
+
+# Mencari Hasil Terbaik
+
+```python
+best_k = None
+best_mse = float("inf")
+```
+
+Digunakan untuk menyimpan:
+
+* nilai `k` terbaik
+* nilai error terkecil
+
+---
+
+# Menampilkan Gambar Asli
+
+```python
+plt.subplot(2,3,1)
+plt.imshow(img, cmap='gray')
+plt.title("Asli")
+plt.axis('off')
+```
+
+Digunakan untuk menampilkan gambar asli.
+
+---
+
+# Perulangan Nilai k
+
+```python
+for k in k_values:
+```
+
+Program akan mencoba beberapa nilai `k`.
+
+---
+
+# Mengambil Sebagian Matriks
+
+```python
+Uk = U[:, :k]
+Sk = np.diag(S[:k])
+VTk = VT[:k, :]
+```
+
+## Penjelasan
+
+Hanya mengambil `k` komponen terpenting dari hasil SVD.
+
+---
+
+# Rekonstruksi Berdasarkan k
+
+```python
+hasil_k = Uk @ Sk @ VTk
+```
+
+Rumus rekonstruksi:
+
+[
+A_k = U_k \Sigma_k V_k^T
+]
+
+A_k = U_k\Sigma_kV_k^T
+
+---
+
+# Menghitung MSE
+
+```python
+mse = np.mean((img.astype(np.float64) - hasil_k) ** 2)
+```
+
+## Rumus MSE
+
+[
+MSE = \frac{1}{n}\sum (I - K)^2
+]
+
+MSE = \frac{1}{n}\sum (I-K)^2
+
+## Penjelasan
+
+MSE digunakan untuk mengukur error gambar.
+
+Semakin kecil MSE:
+
+* gambar semakin mirip asli
+
+---
+
+# Menghitung PSNR
+
+```python
+psnr = 10 * np.log10((255**2) / mse)
+```
+
+## Rumus PSNR
+
+[
+PSNR = 10\log_{10}\left(\frac{255^2}{MSE}\right)
+]
+
+PSNR = 10\log_{10}\left(\frac{255^2}{MSE}\right)
+
+## Penjelasan
+
+PSNR digunakan untuk mengukur kualitas gambar.
+
+Semakin besar PSNR:
+
+* kualitas gambar semakin baik
+
+---
+
+# Menentukan k Terbaik
+
+```python
+if mse < best_mse:
+    best_mse = mse
+    best_k = k
+```
+
+Program memilih nilai `k` dengan MSE terkecil.
+
+---
+
+# Menampilkan Hasil Gambar
+
+```python
+plt.imshow(hasil_k, cmap='gray')
+```
+
+Digunakan untuk menampilkan hasil rekonstruksi berdasarkan nilai `k`.
+
+---
+
+# Menampilkan Semua Gambar
+
+```python
 plt.tight_layout()
-
 plt.show()
 ```
 
+Digunakan untuk merapikan tampilan hasil visualisasi.
+
 ---
 
-# Project Training ke Eigenspace
+# Menampilkan Hasil Terbaik
 
 ```python
-SIGMA = np.diag(S)
-
-projected_training = U @ SIGMA
+print("\n===== HASIL TERBAIK =====")
+print("k terbaik :", best_k)
+print("MSE       :", best_mse)
 ```
 
----
+Program menampilkan:
 
-# Upload Gambar Test
-
-```python
-print("Upload gambar test")
-
-uploaded_test = files.upload()
-```
-
----
-
-# Load Test Image
-
-```python
-test_file = list(uploaded_test.keys())[0]
-
-test_img = cv2.imread(test_file, cv2.IMREAD_GRAYSCALE)
-
-test_img = cv2.resize(test_img, (100,100))
-```
-
----
-
-# Visualisasi Test Image
-
-```python
-plt.imshow(test_img, cmap='gray')
-
-plt.title("Test Image")
-
-plt.axis('off')
-
-plt.show()
-```
-
----
-
-# Flatten Test Image
-
-```python
-test_vector = test_img.flatten().astype('float32')
-```
-
----
-
-# Centering Test Image
-
-```python
-test_centered = test_vector - mean_face
-```
-
----
-
-# Project Test ke Eigenspace
-
-```python
-test_projected = test_centered @ VT.T
-```
-
----
-
-# Hitung Euclidean Distance
-
-```python
-distances = []
-
-for i in range(len(projected_training)):
-
-    dist = np.linalg.norm(
-        test_projected - projected_training[i]
-    )
-
-    distances.append(dist)
-
-    print(f"{labels[i]} = {dist:.2f}")
-```
-
----
-
-# Hasil Recognition
-
-```python
-min_index = np.argmin(distances)
-
-hasil = labels[min_index]
-
-print("Hasil Face Recognition :", hasil)
-```
-
----
-
-# Visualisasi Matching
-
-```python
-matched_img = data_matrix[min_index].reshape(100,100)
-
-plt.figure(figsize=(8,4))
-
-plt.subplot(1,2,1)
-plt.imshow(test_img, cmap='gray')
-plt.title("Test Image")
-plt.axis('off')
-
-plt.subplot(1,2,2)
-plt.imshow(matched_img, cmap='gray')
-plt.title(f"Matched : {hasil}")
-plt.axis('off')
-
-plt.tight_layout()
-
-plt.show()
-```
-
----
-
-# Alur Program
-
-```text
-1. Upload semua foto training
-2. Ambil label dari nama file
-3. Grayscale dan resize gambar
-4. Flatten gambar menjadi vector
-5. Membentuk matrix data
-6. Menghitung mean face
-7. Melakukan centering data
-8. Menjalankan SVD
-9. Membentuk eigenface
-10. Project training ke eigenspace
-11. Upload gambar test
-12. Project gambar test
-13. Menghitung Euclidean distance
-14. Mengambil jarak terkecil
-15. Menampilkan hasil recognition
-```
-
----
-
-# Hubungan PCA dan SVD
-
-| PCA | SVD |
-|---|---|
-| Principal Component | Eigenface |
-| Eigenvalue | Singular Value² |
-| Eigenvector | VT |
-| PCA Projection | U × Σ |
-
----
-
-# Kekurangan Metode Eigenface
-
-- Sensitif pencahayaan
-- Sensitif pose wajah
-- Kurang akurat jika dataset kecil
-- Tidak sekuat Deep Learning modern
+* nilai `k` terbaik
+* nilai MSE terkecil
 
 ---
 
 # Kesimpulan
 
-Program berhasil:
+Program ini menunjukkan bagaimana metode Singular Value Decomposition (SVD) digunakan pada pengolahan citra digital.
 
-- Membaca dataset wajah
-- Mengubah gambar menjadi data numerik
-- Menghitung mean face
-- Melakukan SVD
-- Membentuk eigenface
-- Melakukan face recognition menggunakan Euclidean Distance
+SVD mampu:
 
-Metode ini cocok untuk mempelajari:
+* memecah gambar menjadi beberapa matriks
+* melakukan kompresi gambar
+* merekonstruksi gambar dengan kualitas tertentu
 
-- PCA
-- SVD
-- Eigenvector
-- Face Recognition klasik
+Nilai `k` sangat mempengaruhi kualitas hasil rekonstruksi.
+
+* `k kecil` → kompresi tinggi tetapi kualitas menurun
+* `k besar` → kualitas lebih baik tetapi ukuran data lebih besar
+
+Metode ini sering digunakan dalam:
+
+* kompresi gambar
+* face recognition
+* machine learning
+* pengolahan citra digital
