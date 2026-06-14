@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Persamaan Linear &#8212; Ahmad A&#39;dhomun Ni&#39;am Syah Putra</title>
+    <title>Sistem Persamaan Linear (SPL) &#8212; Ahmad A&#39;dhomun Ni&#39;am Syah Putra</title>
   
   
   
@@ -171,7 +171,7 @@
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Persamaan Linear</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Sistem Persamaan Linear (SPL)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tugas1.html">Eliminasi Gauss</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tugas2.html">Tugas Transformasi Matriks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tugas3.html">Determinan Matriks</a></li>
@@ -388,7 +388,7 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Persamaan Linear</h1>
+    <h1>Sistem Persamaan Linear (SPL)</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -398,9 +398,40 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contoh-persamaan-linear">Contoh Persamaan Linear</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ciri-ciri-persamaan-linear">Ciri-ciri Persamaan Linear</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contoh-sistem-persamaan-linear">Contoh Sistem Persamaan Linear</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pengertian-sistem-persamaan-linear">1. Pengertian Sistem Persamaan Linear</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bentuk-umum-sistem-persamaan-linear">2. Bentuk Umum Sistem Persamaan Linear</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tujuan-penyelesaian-spl">3. Tujuan Penyelesaian SPL</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jenis-jenis-sistem-persamaan-linear">4. Jenis-Jenis Sistem Persamaan Linear</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-spl-dua-variabel-spldv">A. SPL Dua Variabel (SPLDV)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-spl-tiga-variabel-spltv">B. SPL Tiga Variabel (SPLTV)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#c-spl-n-variabel">C. SPL n Variabel</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bentuk-matriks-spl">5. Bentuk Matriks SPL</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#metode-penyelesaian-spl">6. Metode Penyelesaian SPL</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-metode-substitusi">A. Metode Substitusi</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-metode-eliminasi">B. Metode Eliminasi</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#c-metode-grafik">C. Metode Grafik</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-metode-matriks">D. Metode Matriks</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#e-metode-eliminasi-gauss">E. Metode Eliminasi Gauss</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kemungkinan-solusi-spl">7. Kemungkinan Solusi SPL</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-solusi-tunggal">A. Solusi Tunggal</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-tak-hingga-solusi">B. Tak Hingga Solusi</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#c-tidak-memiliki-solusi">C. Tidak Memiliki Solusi</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#penerapan-spl-dalam-kehidupan-nyata">8. Penerapan SPL dalam Kehidupan Nyata</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ekonomi">1. Ekonomi</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#teknik-informatika">2. Teknik Informatika</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#teknik-sipil">3. Teknik Sipil</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#teknik-elektro">4. Teknik Elektro</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#statistik-dan-data-science">5. Statistik dan Data Science</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#keunggulan-spl">9. Keunggulan SPL</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kesimpulan">10. Kesimpulan</a></li>
 </ul>
             </nav>
         </div>
@@ -412,59 +443,452 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="persamaan-linear">
-<h1>Persamaan Linear<a class="headerlink" href="#persamaan-linear" title="Link to this heading">#</a></h1>
-<p>Persamaan linear adalah persamaan matematika yang memiliki variabel berpangkat satu.
-Bentuk umum persamaan linear:</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="sistem-persamaan-linear-spl">
+<h1>Sistem Persamaan Linear (SPL)<a class="headerlink" href="#sistem-persamaan-linear-spl" title="Link to this heading">#</a></h1>
+<section id="pengertian-sistem-persamaan-linear">
+<h2>1. Pengertian Sistem Persamaan Linear<a class="headerlink" href="#pengertian-sistem-persamaan-linear" title="Link to this heading">#</a></h2>
+<p>Sistem Persamaan Linear (SPL) adalah kumpulan dua atau lebih persamaan linear yang memiliki variabel yang sama dan harus dipenuhi secara bersamaan. Persamaan disebut <strong>linear</strong> karena setiap variabel berpangkat satu dan tidak terdapat perkalian antar variabel.</p>
+<p>Contoh persamaan linear:</p>
 <div class="math notranslate nohighlight">
 \[
-ax + by = c
+2x + 3y = 12
 \]</div>
-<p>Keterangan:</p>
-<ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(a\)</span> dan <span class="math notranslate nohighlight">\(b\)</span> adalah koefisien</p></li>
-<li><p><span class="math notranslate nohighlight">\(x\)</span> dan <span class="math notranslate nohighlight">\(y\)</span> adalah variabel</p></li>
-<li><p><span class="math notranslate nohighlight">\(c\)</span> adalah konstanta</p></li>
-</ul>
-<section id="contoh-persamaan-linear">
-<h2>Contoh Persamaan Linear<a class="headerlink" href="#contoh-persamaan-linear" title="Link to this heading">#</a></h2>
+<p>Persamaan tersebut disebut linear karena variabel <span class="math notranslate nohighlight">\(x\)</span> dan <span class="math notranslate nohighlight">\(y\)</span> hanya berpangkat satu.</p>
+<p>Contoh yang <strong>bukan</strong> persamaan linear:</p>
 <div class="math notranslate nohighlight">
 \[
-2x + 3y = 10
+x^2 + y = 10
 \]</div>
-<p>Persamaan linear dapat diselesaikan menggunakan beberapa metode:</p>
-<ul class="simple">
-<li><p>Metode substitusi</p></li>
-<li><p>Metode eliminasi</p></li>
-<li><p>Eliminasi Gauss</p></li>
-<li><p>Matriks invers</p></li>
-</ul>
+<p>atau</p>
+<div class="math notranslate nohighlight">
+\[
+xy + 2x = 5
+\]</div>
+<p>karena terdapat pangkat lebih dari satu dan perkalian antar variabel.</p>
 </section>
-<section id="ciri-ciri-persamaan-linear">
-<h2>Ciri-ciri Persamaan Linear<a class="headerlink" href="#ciri-ciri-persamaan-linear" title="Link to this heading">#</a></h2>
-<ul class="simple">
-<li><p>Variabel berpangkat satu</p></li>
-<li><p>Tidak memiliki akar atau pangkat lebih dari satu</p></li>
-<li><p>Grafik berbentuk garis lurus</p></li>
-</ul>
-</section>
-<section id="contoh-sistem-persamaan-linear">
-<h2>Contoh Sistem Persamaan Linear<a class="headerlink" href="#contoh-sistem-persamaan-linear" title="Link to this heading">#</a></h2>
+<hr class="docutils" />
+<section id="bentuk-umum-sistem-persamaan-linear">
+<h2>2. Bentuk Umum Sistem Persamaan Linear<a class="headerlink" href="#bentuk-umum-sistem-persamaan-linear" title="Link to this heading">#</a></h2>
+<p>Bentuk umum SPL dengan <span class="math notranslate nohighlight">\(n\)</span> variabel adalah:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{aligned}
-x + y &amp;= 5 \\
-2x - y &amp;= 1
+a_{11}x_1 + a_{12}x_2 + \cdots + a_{1n}x_n &amp;= b_1 \\
+a_{21}x_1 + a_{22}x_2 + \cdots + a_{2n}x_n &amp;= b_2 \\
+\vdots \\
+a_{m1}x_1 + a_{m2}x_2 + \cdots + a_{mn}x_n &amp;= b_m
 \end{aligned}
 \end{split}\]</div>
-<p>Sistem persamaan linear digunakan dalam:</p>
+<p>Keterangan:</p>
 <ul class="simple">
-<li><p>Matematika</p></li>
-<li><p>Teknik</p></li>
-<li><p>Komputer</p></li>
-<li><p>Ekonomi</p></li>
-<li><p>Statistik</p></li>
+<li><p><span class="math notranslate nohighlight">\(a_{ij}\)</span> = koefisien</p></li>
+<li><p><span class="math notranslate nohighlight">\(x_1,x_2,\ldots,x_n\)</span> = variabel</p></li>
+<li><p><span class="math notranslate nohighlight">\(b_i\)</span> = konstanta</p></li>
 </ul>
+</section>
+<hr class="docutils" />
+<section id="tujuan-penyelesaian-spl">
+<h2>3. Tujuan Penyelesaian SPL<a class="headerlink" href="#tujuan-penyelesaian-spl" title="Link to this heading">#</a></h2>
+<p>Tujuan utama SPL adalah mencari nilai variabel yang memenuhi seluruh persamaan secara bersamaan.</p>
+<p>Misalnya:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+x+y &amp;= 8 \\
+x-y &amp;= 2
+\end{aligned}
+\end{split}\]</div>
+<p>Nilai yang memenuhi kedua persamaan adalah:</p>
+<div class="math notranslate nohighlight">
+\[
+x=5,\quad y=3
+\]</div>
+<p>Karena:</p>
+<div class="math notranslate nohighlight">
+\[
+5+3=8
+\]</div>
+<p>dan</p>
+<div class="math notranslate nohighlight">
+\[
+5-3=2
+\]</div>
+</section>
+<hr class="docutils" />
+<section id="jenis-jenis-sistem-persamaan-linear">
+<h2>4. Jenis-Jenis Sistem Persamaan Linear<a class="headerlink" href="#jenis-jenis-sistem-persamaan-linear" title="Link to this heading">#</a></h2>
+<section id="a-spl-dua-variabel-spldv">
+<h3>A. SPL Dua Variabel (SPLDV)<a class="headerlink" href="#a-spl-dua-variabel-spldv" title="Link to this heading">#</a></h3>
+<p>Memiliki dua variabel.</p>
+<p>Contoh:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+2x+y &amp;= 7\\
+x-y &amp;= 2
+\end{aligned}
+\end{split}\]</div>
+<p>Variabelnya adalah <span class="math notranslate nohighlight">\(x\)</span> dan <span class="math notranslate nohighlight">\(y\)</span>.</p>
+</section>
+<hr class="docutils" />
+<section id="b-spl-tiga-variabel-spltv">
+<h3>B. SPL Tiga Variabel (SPLTV)<a class="headerlink" href="#b-spl-tiga-variabel-spltv" title="Link to this heading">#</a></h3>
+<p>Memiliki tiga variabel.</p>
+<p>Contoh:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+x+y+z &amp;= 6\\
+2x-y+z &amp;= 3\\
+x+2y-z &amp;= 4
+\end{aligned}
+\end{split}\]</div>
+<p>Variabelnya adalah <span class="math notranslate nohighlight">\(x\)</span>, <span class="math notranslate nohighlight">\(y\)</span>, dan <span class="math notranslate nohighlight">\(z\)</span>.</p>
+</section>
+<hr class="docutils" />
+<section id="c-spl-n-variabel">
+<h3>C. SPL n Variabel<a class="headerlink" href="#c-spl-n-variabel" title="Link to this heading">#</a></h3>
+<p>Memiliki lebih dari tiga variabel.</p>
+<p>Contoh:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+x_1+x_2+x_3+x_4 &amp;= 10\\
+2x_1+x_2-x_3+x_4 &amp;= 8\\
+x_1+3x_2+x_3-x_4 &amp;= 7\\
+2x_1+x_2+x_3+2x_4 &amp;= 12
+\end{aligned}
+\end{split}\]</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="bentuk-matriks-spl">
+<h2>5. Bentuk Matriks SPL<a class="headerlink" href="#bentuk-matriks-spl" title="Link to this heading">#</a></h2>
+<p>SPL dapat ditulis dalam bentuk matriks:</p>
+<div class="math notranslate nohighlight">
+\[
+AX=B
+\]</div>
+<p>dengan:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+A=
+\begin{bmatrix}
+2 &amp; 1\\
+1 &amp; -1
+\end{bmatrix}
+\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+X=
+\begin{bmatrix}
+x\\
+y
+\end{bmatrix}
+\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+B=
+\begin{bmatrix}
+7\\
+2
+\end{bmatrix}
+\end{split}\]</div>
+<p>Sehingga:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{bmatrix}
+2 &amp; 1\\
+1 &amp; -1
+\end{bmatrix}
+\begin{bmatrix}
+x\\
+y
+\end{bmatrix}
+=
+\begin{bmatrix}
+7\\
+2
+\end{bmatrix}
+\end{split}\]</div>
+<p>Bentuk matriks sangat penting dalam komputasi dan pemrograman.</p>
+</section>
+<hr class="docutils" />
+<section id="metode-penyelesaian-spl">
+<h2>6. Metode Penyelesaian SPL<a class="headerlink" href="#metode-penyelesaian-spl" title="Link to this heading">#</a></h2>
+<section id="a-metode-substitusi">
+<h3>A. Metode Substitusi<a class="headerlink" href="#a-metode-substitusi" title="Link to this heading">#</a></h3>
+<p>Salah satu variabel dinyatakan dalam variabel lain, kemudian disubstitusikan ke persamaan lainnya.</p>
+<p>Contoh:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+x+y &amp;= 8\\
+x-y &amp;= 2
+\end{aligned}
+\end{split}\]</div>
+<p>Dari persamaan kedua:</p>
+<div class="math notranslate nohighlight">
+\[
+x=y+2
+\]</div>
+<p>Substitusi ke persamaan pertama:</p>
+<div class="math notranslate nohighlight">
+\[
+(y+2)+y=8
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+2y+2=8
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+2y=6
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+y=3
+\]</div>
+<p>Substitusi kembali:</p>
+<div class="math notranslate nohighlight">
+\[
+x=3+2=5
+\]</div>
+<p>Jadi:</p>
+<div class="math notranslate nohighlight">
+\[
+(x,y)=(5,3)
+\]</div>
+</section>
+<hr class="docutils" />
+<section id="b-metode-eliminasi">
+<h3>B. Metode Eliminasi<a class="headerlink" href="#b-metode-eliminasi" title="Link to this heading">#</a></h3>
+<p>Menghilangkan salah satu variabel dengan menjumlahkan atau mengurangkan persamaan.</p>
+<p>Contoh:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+x+y &amp;= 8\\
+x-y &amp;= 2
+\end{aligned}
+\end{split}\]</div>
+<p>Jumlahkan kedua persamaan:</p>
+<div class="math notranslate nohighlight">
+\[
+(x+y)+(x-y)=8+2
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+2x=10
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+x=5
+\]</div>
+<p>Substitusi ke persamaan pertama:</p>
+<div class="math notranslate nohighlight">
+\[
+5+y=8
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+y=3
+\]</div>
+</section>
+<hr class="docutils" />
+<section id="c-metode-grafik">
+<h3>C. Metode Grafik<a class="headerlink" href="#c-metode-grafik" title="Link to this heading">#</a></h3>
+<p>Setiap persamaan digambarkan sebagai garis.</p>
+<p>Titik perpotongan kedua garis merupakan solusi SPL.</p>
+<p>Contoh:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+x+y &amp;= 8\\
+x-y &amp;= 2
+\end{aligned}
+\end{split}\]</div>
+<p>Diubah menjadi:</p>
+<div class="math notranslate nohighlight">
+\[
+y = 8 - x
+\]</div>
+<p>dan</p>
+<div class="math notranslate nohighlight">
+\[
+y = x - 2
+\]</div>
+<p>Kedua garis berpotongan pada titik:</p>
+<div class="math notranslate nohighlight">
+\[
+(5,3)
+\]</div>
+</section>
+<hr class="docutils" />
+<section id="d-metode-matriks">
+<h3>D. Metode Matriks<a class="headerlink" href="#d-metode-matriks" title="Link to this heading">#</a></h3>
+<p>Jika:</p>
+<div class="math notranslate nohighlight">
+\[
+AX=B
+\]</div>
+<p>maka:</p>
+<div class="math notranslate nohighlight">
+\[
+X=A^{-1}B
+\]</div>
+<p>dengan syarat matriks <span class="math notranslate nohighlight">\(A\)</span> memiliki invers.</p>
+<p>Metode ini banyak digunakan dalam komputasi numerik.</p>
+</section>
+<hr class="docutils" />
+<section id="e-metode-eliminasi-gauss">
+<h3>E. Metode Eliminasi Gauss<a class="headerlink" href="#e-metode-eliminasi-gauss" title="Link to this heading">#</a></h3>
+<p>Metode yang paling banyak digunakan dalam ilmu komputer dan matematika numerik.</p>
+<p>Langkah-langkah:</p>
+<ol class="arabic simple">
+<li><p>Membentuk matriks augmented.</p></li>
+<li><p>Mengubah matriks menjadi bentuk segitiga atas.</p></li>
+<li><p>Melakukan substitusi balik.</p></li>
+</ol>
+<p>Contoh:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\left[
+\begin{array}{cc|c}
+1&amp;1&amp;8\\
+1&amp;-1&amp;2
+\end{array}
+\right]
+\end{split}\]</div>
+<p>Operasi baris:</p>
+<div class="math notranslate nohighlight">
+\[
+R_2 \leftarrow R_2-R_1
+\]</div>
+<p>menghasilkan:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\left[
+\begin{array}{cc|c}
+1&amp;1&amp;8\\
+0&amp;-2&amp;-6
+\end{array}
+\right]
+\end{split}\]</div>
+<p>Diperoleh:</p>
+<div class="math notranslate nohighlight">
+\[
+y=3
+\]</div>
+<p>dan</p>
+<div class="math notranslate nohighlight">
+\[
+x=5
+\]</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="kemungkinan-solusi-spl">
+<h2>7. Kemungkinan Solusi SPL<a class="headerlink" href="#kemungkinan-solusi-spl" title="Link to this heading">#</a></h2>
+<section id="a-solusi-tunggal">
+<h3>A. Solusi Tunggal<a class="headerlink" href="#a-solusi-tunggal" title="Link to this heading">#</a></h3>
+<p>Memiliki tepat satu solusi.</p>
+<p>Contoh:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+x+y &amp;= 8\\
+x-y &amp;= 2
+\end{aligned}
+\end{split}\]</div>
+<p>Hasil:</p>
+<div class="math notranslate nohighlight">
+\[
+(5,3)
+\]</div>
+</section>
+<hr class="docutils" />
+<section id="b-tak-hingga-solusi">
+<h3>B. Tak Hingga Solusi<a class="headerlink" href="#b-tak-hingga-solusi" title="Link to this heading">#</a></h3>
+<p>Persamaan saling bergantung.</p>
+<p>Contoh:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+x+y &amp;= 4\\
+2x+2y &amp;= 8
+\end{aligned}
+\end{split}\]</div>
+<p>Persamaan kedua merupakan kelipatan persamaan pertama.</p>
+</section>
+<hr class="docutils" />
+<section id="c-tidak-memiliki-solusi">
+<h3>C. Tidak Memiliki Solusi<a class="headerlink" href="#c-tidak-memiliki-solusi" title="Link to this heading">#</a></h3>
+<p>Garis sejajar sehingga tidak berpotongan.</p>
+<p>Contoh:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+x+y &amp;= 4\\
+x+y &amp;= 8
+\end{aligned}
+\end{split}\]</div>
+<p>Mustahil memenuhi kedua persamaan sekaligus.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="penerapan-spl-dalam-kehidupan-nyata">
+<h2>8. Penerapan SPL dalam Kehidupan Nyata<a class="headerlink" href="#penerapan-spl-dalam-kehidupan-nyata" title="Link to this heading">#</a></h2>
+<section id="ekonomi">
+<h3>1. Ekonomi<a class="headerlink" href="#ekonomi" title="Link to this heading">#</a></h3>
+<p>Menentukan harga barang.</p>
+<p>Misal:</p>
+<ul class="simple">
+<li><p>2 buku + 1 pensil = Rp7.000</p></li>
+<li><p>1 buku + 2 pensil = Rp5.000</p></li>
+</ul>
+<p>SPL digunakan untuk menentukan harga masing-masing barang.</p>
+</section>
+<section id="teknik-informatika">
+<h3>2. Teknik Informatika<a class="headerlink" href="#teknik-informatika" title="Link to this heading">#</a></h3>
+<p>Digunakan pada:</p>
+<ul class="simple">
+<li><p>Machine Learning</p></li>
+<li><p>Artificial Intelligence</p></li>
+<li><p>Computer Vision</p></li>
+<li><p>Grafik Komputer</p></li>
+<li><p>Analisis Data</p></li>
+</ul>
+<p>Banyak algoritma bekerja dengan matriks dan SPL.</p>
+</section>
+<section id="teknik-sipil">
+<h3>3. Teknik Sipil<a class="headerlink" href="#teknik-sipil" title="Link to this heading">#</a></h3>
+<p>Menghitung gaya pada struktur bangunan dan jembatan.</p>
+</section>
+<section id="teknik-elektro">
+<h3>4. Teknik Elektro<a class="headerlink" href="#teknik-elektro" title="Link to this heading">#</a></h3>
+<p>Menyelesaikan rangkaian listrik menggunakan Hukum Kirchhoff.</p>
+</section>
+<section id="statistik-dan-data-science">
+<h3>5. Statistik dan Data Science<a class="headerlink" href="#statistik-dan-data-science" title="Link to this heading">#</a></h3>
+<p>Digunakan dalam regresi linear dan pemodelan data.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="keunggulan-spl">
+<h2>9. Keunggulan SPL<a class="headerlink" href="#keunggulan-spl" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Dapat menyelesaikan banyak masalah nyata.</p></li>
+<li><p>Menjadi dasar aljabar linear.</p></li>
+<li><p>Digunakan dalam pemrograman dan komputasi ilmiah.</p></li>
+<li><p>Mendukung pengembangan AI dan Machine Learning.</p></li>
+<li><p>Dapat diselesaikan secara manual maupun menggunakan komputer.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="kesimpulan">
+<h2>10. Kesimpulan<a class="headerlink" href="#kesimpulan" title="Link to this heading">#</a></h2>
+<p>Sistem Persamaan Linear (SPL) adalah sekumpulan dua atau lebih persamaan linear yang harus dipenuhi secara bersamaan. Solusi SPL merupakan nilai variabel yang memenuhi seluruh persamaan dalam sistem. Penyelesaiannya dapat dilakukan dengan metode substitusi, eliminasi, grafik, matriks, Eliminasi Gauss, maupun metode numerik lainnya. Karena kemampuannya memodelkan berbagai permasalahan nyata, SPL menjadi salah satu materi paling penting dalam matematika, teknik, statistika, dan ilmu komputer.</p>
 <p><img alt="original image" src="https://cdn.mathpix.com/snip/images/Je1xlDOue0ix7lOp3b7k-zMVnFOVoOWMH1zTmIzbUq8.original.fullsize.png" /></p>
 </section>
 </section>
@@ -535,9 +959,40 @@ x + y &amp;= 5 \\
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contoh-persamaan-linear">Contoh Persamaan Linear</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ciri-ciri-persamaan-linear">Ciri-ciri Persamaan Linear</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contoh-sistem-persamaan-linear">Contoh Sistem Persamaan Linear</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pengertian-sistem-persamaan-linear">1. Pengertian Sistem Persamaan Linear</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bentuk-umum-sistem-persamaan-linear">2. Bentuk Umum Sistem Persamaan Linear</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tujuan-penyelesaian-spl">3. Tujuan Penyelesaian SPL</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jenis-jenis-sistem-persamaan-linear">4. Jenis-Jenis Sistem Persamaan Linear</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-spl-dua-variabel-spldv">A. SPL Dua Variabel (SPLDV)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-spl-tiga-variabel-spltv">B. SPL Tiga Variabel (SPLTV)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#c-spl-n-variabel">C. SPL n Variabel</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bentuk-matriks-spl">5. Bentuk Matriks SPL</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#metode-penyelesaian-spl">6. Metode Penyelesaian SPL</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-metode-substitusi">A. Metode Substitusi</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-metode-eliminasi">B. Metode Eliminasi</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#c-metode-grafik">C. Metode Grafik</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-metode-matriks">D. Metode Matriks</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#e-metode-eliminasi-gauss">E. Metode Eliminasi Gauss</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kemungkinan-solusi-spl">7. Kemungkinan Solusi SPL</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-solusi-tunggal">A. Solusi Tunggal</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-tak-hingga-solusi">B. Tak Hingga Solusi</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#c-tidak-memiliki-solusi">C. Tidak Memiliki Solusi</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#penerapan-spl-dalam-kehidupan-nyata">8. Penerapan SPL dalam Kehidupan Nyata</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ekonomi">1. Ekonomi</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#teknik-informatika">2. Teknik Informatika</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#teknik-sipil">3. Teknik Sipil</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#teknik-elektro">4. Teknik Elektro</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#statistik-dan-data-science">5. Statistik dan Data Science</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#keunggulan-spl">9. Keunggulan SPL</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kesimpulan">10. Kesimpulan</a></li>
 </ul>
   </nav></div>
 
