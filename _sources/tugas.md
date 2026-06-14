@@ -501,5 +501,10 @@ Digunakan dalam regresi linear dan pemodelan data.
 
 Sistem Persamaan Linear (SPL) adalah sekumpulan dua atau lebih persamaan linear yang harus dipenuhi secara bersamaan. Solusi SPL merupakan nilai variabel yang memenuhi seluruh persamaan dalam sistem. Penyelesaiannya dapat dilakukan dengan metode substitusi, eliminasi, grafik, matriks, Eliminasi Gauss, maupun metode numerik lainnya. Karena kemampuannya memodelkan berbagai permasalahan nyata, SPL menjadi salah satu materi paling penting dalam matematika, teknik, statistika, dan ilmu komputer.
 
+---
+
+## Contoh
+- eq1 : x + y = 4
+- eq2 : x - y = 2
 
 ![original image](https://cdn.mathpix.com/snip/images/Je1xlDOue0ix7lOp3b7k-zMVnFOVoOWMH1zTmIzbUq8.original.fullsize.png)
